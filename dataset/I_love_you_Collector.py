@@ -3,6 +3,6 @@ import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-DataCollector = DataCollector("I Love You","i_love_you",max_samples=100)
+DataCollector = DataCollector("I Love You","i_love_you")
 
 DataCollector.collect()

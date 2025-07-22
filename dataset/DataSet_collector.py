@@ -6,7 +6,7 @@ import time
 
 class DataCollector:
     '''' This constructor initilize the starting variable like gesture name, saving directory path, max samples we can collect'''
-    def __init__(self,gesture_name,save_dir,max_samples= 100):
+    def __init__(self,gesture_name,save_dir,max_samples= 250):
         self.gesture_name = gesture_name
         self.save_dir = save_dir
         self.max_samples = max_samples

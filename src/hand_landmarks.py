@@ -34,10 +34,13 @@ class HandDetector():
         lmlist = []
         if self.results.multi_hand_landmarks:
             myHand = self.results.multi_hand_landmarks[handNo]
-            height,width,channel = img.shape
+            height,width,channel = img.shape # Still needed for drawing circles
             for id,lm in enumerate(myHand.landmark):
+                # Append the normalized coordinates directly
+                lmlist.append([lm.x, lm.y, lm.z]) # lm.z is also provided by MediaPipe
+                
+                # For drawing, convert to pixel coordinates
                 cx,cy = int(lm.x*width),int(lm.y*height)
-                lmlist.append([id,cx,cy])
                 if draw:
                     cv.circle(img,(cx,cy),2,(0,255,0),cv.FILLED)
         return lmlist
