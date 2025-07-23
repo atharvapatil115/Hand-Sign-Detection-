@@ -10,12 +10,16 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
 from joblib import load
 
+base_path = os.path.join("..", "Saved_models")
+model_path = os.path.join(base_path,"Gesture_trained_model.joblib")
+encoder_model_path = os.path.join(base_path,"label_encoder.joblib")
+
 cap = cv.VideoCapture(0)
 previous_time = 0
 current_time = 0
-encoder = load("label_encoder.joblib")
+encoder = load(encoder_model_path)
 detector=HandDetector()
-model = load("Gesture_trained_model.joblib")
+model = load(model_path)
 
 while True:
     success, img = cap.read()
