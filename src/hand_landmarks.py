@@ -54,21 +54,11 @@ def main():
     detector = HandDetector()
     while True:
         success,img = cap.read()
-        img = detector.findHands(img)
-
-      
-        
-                # print(results.multi_hand_landmarks) 
-                
-
+        img = detector.findHands(img)                
         current_time= time.time()
         lmlist = detector.findPosition(img)
         fps=1/(current_time-previous_time)
         previous_time = current_time
-           
-
-
-        # if len(lmlist)!=0:
         cv.putText(img,str(int(fps)),(10,70),cv.FONT_HERSHEY_PLAIN,3,(255,0,255),3)
         cv.imshow("image",img)
         cv.waitKey(1)
