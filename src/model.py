@@ -10,9 +10,10 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
 from joblib import load
 
-base_path = os.path.join("..", "Saved_models")
-model_path = os.path.join(base_path,"Gesture_trained_model.joblib")
-encoder_model_path = os.path.join(base_path,"label_encoder.joblib")
+current_dir = os.path.dirname(os.path.abspath(__file__))
+root_dir = os.path.abspath(os.path.join(current_dir, ".."))
+model_path = os.path.join(root_dir, "Saved_models", "Gesture_trained_model.joblib")
+encoder_model_path = os.path.join(root_dir, "Saved_models", "label_encoder.joblib")
 
 cap = cv.VideoCapture(0)
 previous_time = 0
