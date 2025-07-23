@@ -9,7 +9,8 @@ import numpy as np
 from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
 from joblib import load
-
+import keyboard
+from Speech import text_to_speech
 current_dir = os.path.dirname(os.path.abspath(__file__))
 root_dir = os.path.abspath(os.path.join(current_dir, ".."))
 model_path = os.path.join(root_dir, "Saved_models", "Gesture_trained_model.joblib")
@@ -47,6 +48,9 @@ while True:
             pred = model.predict(input_data)
             pred_label = encoder.inverse_transform(pred)[0]
             cv.putText(img, pred_label, (10, 100), cv.FONT_HERSHEY_PLAIN, 3, (0, 0, 0), 3)
+            if keyboard.is_pressed('space'):
+                text_to_speech.convert_text_to_speech(pred_label)
+
         else:
             cv.putText(img, "Incorrect features", (10, 90), cv.FONT_HERSHEY_PLAIN, 3, (0, 0, 255), 3)
             print(f"Warning: Landmark list has {len(lmlist)} points, but expected 21. Reshaped input has {input_data.shape[1]} features, expected {expected_features}.")
